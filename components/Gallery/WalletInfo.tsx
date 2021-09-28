@@ -13,6 +13,7 @@ export default function WalletInfo({ address }) {
     setIsDropdownOpen(false);
   });
 
+  if (!address) return null;
   return (
     <div className="mt-5">
       <div className="bg-red-600 rounded-full w-20 h-20 mb-5"></div>
