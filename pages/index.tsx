@@ -1,15 +1,15 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import FullScreen from "../components/FullScreen";
+import Search from "../components/Search";
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const IndexPage = () => {
+  return (
+    <FullScreen>
+      <div>
+        <h1 className="text-5xl mb-5">Fantom NFTs Gallery</h1>
+        <Search />
+      </div>
+    </FullScreen>
+  );
+};
 
-export default IndexPage
+export default IndexPage;
