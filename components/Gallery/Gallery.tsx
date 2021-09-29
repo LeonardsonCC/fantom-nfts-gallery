@@ -15,9 +15,9 @@ export default function Gallery({ tokens }: IProps) {
           >
             <img
               src={token.imageURL}
-              className="object-cover h-64 w-full rounded-2xl shadow-md transform hover:scale-110  z-10 hover:z-40"
+              className="object-cover h-64 w-64 rounded-2xl shadow-md transition-transform duration-200 transform hover:scale-110  z-10 hover:z-40"
             />
-            <span>{token.name}</span>
+            <span className="mt-3 ml-2">{token.name}</span>
           </div>
         );
       })}
