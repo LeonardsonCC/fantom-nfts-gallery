@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Sidebar from "../../components/Gallery/Sidebar";
+import Sidebar from "../components/Gallery/Sidebar";
 import axios from "axios";
-import Gallery from "../../components/Gallery/Gallery";
-import { Token } from "../../interfaces/ArtionApiResponse";
+import Gallery from "../components/Gallery/Gallery";
+import { Token } from "../interfaces/ArtionApiResponse";
 
 export default function Wallet() {
   const router = useRouter();
@@ -12,6 +12,14 @@ export default function Wallet() {
   const [tokens, setTokens] = useState<Token[]>([]);
 
   useEffect(() => {
+    fetchWalletNfts();
+  }, [address]);
+
+  useEffect(() => {
+    fetchWalletNfts();
+  }, []);
+
+  const fetchWalletNfts = () => {
     axios
       .post(
         "https://fetch-tokens.vercel.app/api",
@@ -33,7 +41,7 @@ export default function Wallet() {
         setTokens(data.data.tokens);
       })
       .catch((err) => console.log(err));
-  }, []);
+  };
 
   return (
     <div className="flex flex-row overflow-y-hidden">

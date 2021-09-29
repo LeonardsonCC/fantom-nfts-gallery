@@ -9,7 +9,7 @@ export default function Search() {
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     if (searchQuery) {
-      router.push(`/wallet/${searchQuery}`);
+      router.push(`/${searchQuery}`);
     }
   };
 
