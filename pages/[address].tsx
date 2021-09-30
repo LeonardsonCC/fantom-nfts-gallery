@@ -1,48 +1,15 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import Sidebar from "../components/Gallery/Sidebar";
-import axios from "axios";
 import Gallery from "../components/Gallery/Gallery";
-import { Token } from "../interfaces/ArtionApiResponse";
+import useFetchNfts from "../hooks/useFetchNfts";
 
 export default function Wallet() {
   const router = useRouter();
   const { address } = router.query;
 
-  const [tokens, setTokens] = useState<Token[]>([]);
+  const tokens = useFetchNfts(address as string);
 
-  useEffect(() => {
-    fetchWalletNfts();
-  }, [address]);
-
-  useEffect(() => {
-    fetchWalletNfts();
-  }, []);
-
-  const fetchWalletNfts = () => {
-    axios
-      .post(
-        "https://fetch-tokens.vercel.app/api",
-        {
-          address: address,
-          count: 18,
-          from: 0,
-          sortby: "createdAt",
-          type: "single",
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then(({ data }) => {
-        console.log(data);
-        setTokens(data.data.tokens);
-      })
-      .catch((err) => console.log(err));
-  };
-
+  if (!tokens) return null;
   return (
     <div className="flex flex-row overflow-y-hidden">
       <Sidebar address={address as string} />

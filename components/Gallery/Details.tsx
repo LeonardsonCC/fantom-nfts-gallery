@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import useOutsideAlerter from "../../hooks/useOutsiderAlerter";
-import { Token } from "../../interfaces/ArtionApiResponse";
+import { Token } from "../../interfaces/AdaptersResponse";
 import NftLinks from "./NftLinks";
 
 interface IProps {

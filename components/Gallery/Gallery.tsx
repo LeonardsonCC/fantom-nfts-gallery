@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Token } from "../../interfaces/ArtionApiResponse";
+import { Token } from "../../interfaces/AdaptersResponse";
 import Details from "./Details";
 
 interface IProps {

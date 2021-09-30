@@ -1,4 +1,4 @@
-import { Token } from "../../interfaces/ArtionApiResponse";
+import { Token } from "../../interfaces/AdaptersResponse";
 
 interface IProps {
   nft: Token;
