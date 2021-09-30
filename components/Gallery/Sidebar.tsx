@@ -9,10 +9,15 @@ interface IProps {
 
 export default function Sidebar({ address, collections }: IProps) {
   return (
-    <div className="bg-blue-200 w-1/5 h-screen px-6" style={{ minWidth: 277 }}>
-      <Link href="/">Home</Link>
+    <>
+      <div
+        className="bg-blue-200 w-1/5 h-screen px-6 hidden lg:block"
+        style={{ minWidth: 277 }}
+      >
+        <Link href="/">Home</Link>
 
-      <WalletInfo address={address} />
-    </div>
+        <WalletInfo address={address} />
+      </div>
+    </>
   );
 }

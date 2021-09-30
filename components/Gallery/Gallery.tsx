@@ -10,7 +10,7 @@ export default function Gallery({ tokens }: IProps) {
   const [nftDetails, setNftDetails] = useState<Token | null>(null);
 
   return (
-    <div className="w-4/5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-x-3 gap-y-3 px-5 py-5 overflow-y-scroll h-screen">
+    <div className="w-full lg:w-4/5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 place-items-center gap-x-3 gap-y-3 px-5 py-5 overflow-y-scroll h-screen">
       {tokens.map((token) => {
         return (
           <div
