@@ -4,8 +4,8 @@ export interface FetchTokensResponse {
 
 export interface Token {
   contractAddress: string;
-  imageURL: string;
-  name: string;
+  imageURL?: string;
+  name?: string;
   tokenID: number;
   tokenURI: string;
 }

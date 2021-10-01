@@ -6,7 +6,7 @@ interface PaintSwapResponse {
   nft: {
     tokenId: string;
     uri: string;
-  }[];
+  };
 }
 interface RandomServerResponse {
   image: string;
@@ -28,15 +28,15 @@ const fetchTokens = (address: string) => {
       )
       .then(({ data: { nfts } }) => {
         const tokens: Token[] = [];
-        Promise.all<FetchTokensResponse[]>(
-          nfts.map(async (nft): Promise<FetchTokensResponse> => {
+        Promise.all<Token>(
+          nfts.map(async (nft): Promise<Token> => {
             try {
               const { data } = await axios.get<RandomServerResponse>(
                 nft.nft.uri
               );
               return {
                 contractAddress: nft.address,
-                tokenID: nft.nft.tokenId,
+                tokenID: Number(nft.nft.tokenId),
                 tokenURI: nft.nft.uri,
                 imageURL: data.image,
                 name: data.name,
@@ -46,7 +46,7 @@ const fetchTokens = (address: string) => {
             }
             return {
               contractAddress: nft.address,
-              tokenID: nft.nft.tokenId,
+              tokenID: Number(nft.nft.tokenId),
               tokenURI: nft.nft.uri,
             };
           })
