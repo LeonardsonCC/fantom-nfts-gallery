@@ -23,6 +23,12 @@ export default function Search() {
         value={searchQuery}
         onChange={(event) => setSearchQuery(event.target.value)}
       />
+      <button
+        type="submit"
+        className="px-5 py-2 mt-3 bg-blue-500 rounded-lg text-white w-full"
+      >
+        Go to gallery
+      </button>
     </form>
   );
 }
