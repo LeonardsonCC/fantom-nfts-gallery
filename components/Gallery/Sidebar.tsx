@@ -15,6 +15,14 @@ export default function Sidebar({ address, collections }: IProps) {
         style={{ minWidth: 277 }}
       >
         <WalletInfo address={address} />
+        <div className="flex flex-col mt-5 overflow-y-auto">
+          <h3 className="text-xl font-bold">Collections</h3>
+          {collections.map((collection) => (
+            <Link href={""}>
+              <span>{collection.name}</span>
+            </Link>
+          ))}
+        </div>
       </div>
     </>
   );

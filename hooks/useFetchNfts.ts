@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Token } from "../interfaces/AdaptersResponse";
+import Collection from "../interfaces/Collection";
 import { fetchTokens as fetchArtionTokens } from "../adapters/artion";
 import { fetchTokens as fetchPaintSwapTokens } from "../adapters/paintSwap";
+import { minifyWalletAddress } from "../utils/wallet";
 
-function useFetchNfts(address: string) {
+function useFetchNfts(address: string): [Token[], Collection[]] | [] {
   if (address === undefined) return [];
   const [tokens, setTokens] = useState<Token[]>([]);
   useEffect(() => {
@@ -25,7 +27,24 @@ function useFetchNfts(address: string) {
     return [fetchArtionTokens(address), fetchPaintSwapTokens(address)];
   };
 
-  return tokens;
+  const collections = tokens.reduce<Collection[]>((acc, curr) => {
+    const index = acc.findIndex(
+      (item) => item.contract === curr.contractAddress
+    );
+    if (index >= 0) {
+      return acc;
+    } else {
+      return [
+        ...acc,
+        {
+          name: minifyWalletAddress(curr.contractAddress),
+          contract: curr.contractAddress,
+        },
+      ];
+    }
+  }, []);
+
+  return [tokens, collections];
 }
 
 const settle = (
