@@ -16,7 +16,6 @@ export default function WalletInfo({ address }) {
   if (!address) return null;
   return (
     <div className="mt-5">
-      <div className="bg-red-600 rounded-full w-20 h-20 mb-5"></div>
       <div className="flex flex-row justify-between">
         <h4 className="font-bold text-xl">{minifyWalletAddress(address)}</h4>
         <CopyToClipboard text={address} />

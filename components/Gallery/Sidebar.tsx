@@ -14,8 +14,6 @@ export default function Sidebar({ address, collections }: IProps) {
         className="bg-blue-200 w-1/5 h-screen px-6 hidden lg:block"
         style={{ minWidth: 277 }}
       >
-        <Link href="/">Home</Link>
-
         <WalletInfo address={address} />
       </div>
     </>

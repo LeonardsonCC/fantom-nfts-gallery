@@ -16,8 +16,8 @@ export default function Details({ nft, onDismiss }: IProps) {
   });
 
   return (
-    <div className="flex items-center justify-center z-50 absolute top-0 bottom-0 left-0 right-0 w-screen h-screen bg-black bg-opacity-40">
-      <div ref={popupRef} className="w-2/3 grid grid-cols-2 overflow-y-auto">
+    <div className="flex items-center justify-center z-50 absolute top-0 bottom-0 left-0 right-0 w-screen h-screen bg-black bg-opacity-40 overflow-x-auto py-5">
+      <div ref={popupRef} className="w-2/3 grid grid-cols-2">
         <div className="mt-5">
           <img
             src={nft.imageURL}
