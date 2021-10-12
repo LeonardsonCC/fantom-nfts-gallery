@@ -10,13 +10,21 @@ interface IProps {
 export default function Gallery({ tokens }: IProps) {
   const router = useRouter();
 
-  const [nfts, setNfts] = useState<Token[]>([...tokens]);
+  const [nfts, setNfts] = useState<Token[]>([]);
   const [nftDetails, setNftDetails] = useState<Token | null>(null);
-  const [contractFilter, setContractFilter] = useState<string | null>(null);
+  const [contractFilter, setContractFilter] = useState<string | null>();
 
   useEffect(() => {
-    setContractFilter(router.query.collection as string);
-  }, [router]);
+    setNfts(tokens);
+  }, [tokens]);
+
+  useEffect(() => {
+    if (router.query.collection) {
+      setContractFilter(router.query.collection as string);
+    } else {
+      setContractFilter(null);
+    }
+  }, [router.query.collection, tokens]);
 
   useEffect(() => {
     let newNfts = [...tokens];
@@ -25,7 +33,6 @@ export default function Gallery({ tokens }: IProps) {
         (item) => item.contractAddress === contractFilter
       );
     }
-    console.log(newNfts, contractFilter);
     setNfts(newNfts);
   }, [contractFilter]);
 

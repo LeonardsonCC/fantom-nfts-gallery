@@ -32,6 +32,11 @@ export default function Sidebar({ address, collections }: IProps) {
         className="bg-blue-200 w-1/5 h-screen px-6 hidden lg:block"
         style={{ minWidth: 277 }}
       >
+        <div>
+          <Link href="/">
+            <span className="text-black">Back to home</span>
+          </Link>
+        </div>
         <WalletInfo address={address} />
         <div className="flex flex-col mt-5 overflow-y-auto overflow-x-hidden">
           <h3 className="text-xl font-bold">Collections</h3>
