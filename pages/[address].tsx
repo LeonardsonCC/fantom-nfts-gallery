@@ -8,7 +8,6 @@ export default function Wallet() {
   const { address } = router.query;
 
   const [tokens, collections] = useFetchNfts(address as string);
-  console.log(collections);
 
   if (!tokens) return null;
   return (
